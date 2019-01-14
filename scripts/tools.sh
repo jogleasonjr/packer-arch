@@ -3,5 +3,14 @@
 set -e
 set -x
 
-sudo pacman -S --noconfirm vim
+# Basic tooling
+sudo pacman -S --noconfirm vim git
 
+# Install trizen (AUR helper)
+mkdir -p /home/dev/git && cd $_
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+makepkg --noconfirm -si
+
+# Web Browswer
+sudo pacman -S --noconfirm firefox

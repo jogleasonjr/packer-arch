@@ -33,11 +33,11 @@
             "iso_checksum": "{{user `iso_checksum`}}",
             "iso_checksum_type": "{{user `iso_checksum_type`}}",
             "output_directory": "output/{{user `vm_name`}}",
-            "headless": "yes",
+            "headless": "true",
             "disk_size": "{{user `disk_size`}}",
             "format": "qcow2",
             "accelerator": "kvm",
-            "http_directory": "path/to/httpdir",
+            "http_directory": "http",
             "net_device": "virtio-net",
             "disk_interface": "virtio",
             "boot_wait": "10s",
@@ -51,18 +51,31 @@
             "ssh_password": "piranha",
             "shutdown_command": "sudo systemctl poweroff",
             "qemuargs": [
-                [ "-m", "{{ user `memory` }}" ],
-                [ "-smp", "cpus={{ user `cpus`}}"]
-              ]
-          }
+                [
+                    "-m",
+                    "{{ user `memory` }}"
+                ],
+                [
+                    "-smp",
+                    "cpus={{ user `cpus`}}"
+                ]
+            ]
+        }
     ],
     "provisioners": [
+        {
+            "type": "file",
+            "source": "content",
+            "destination": "/tmp"
+        },
         {
             "type": "shell",
             "scripts": [
                 "scripts/tools.sh",
                 "scripts/vmware.sh",
-                "scripts/i3.sh"
+                "scripts/i3.sh",
+                "scripts/theme.sh",
+                "scripts/cleanup.sh"
             ]
         }
     ],

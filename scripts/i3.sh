@@ -7,17 +7,25 @@ if [ "$PACKER_BUILDER_TYPE" != "vmware-iso" ]; then
   exit 0
 fi
 
-# install xorg and i3
+# install xorg and i3+defaults
 sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps i3status dmenu
+# set up `startx`
+cp /tmp/content/home/.xinitrc /home/dev/.xinitrc
+# copy i3 config
+mkdir -p /home/dev/.config/i3 && cp /tmp/content/home/.config/i3/config "$_/config"
 
-# install some sane defaults
-sudo pacman -S --noconfirm noto-fonts termite nemo
+# install default terminal
+sudo pacman -S --noconfirm termite
 
-# wire up startx and default i3 config
-# mkdir -p /home/dev/.config/i3
-# cp /etc/i3/config /home/dev/.config/i3/config
-printf "#!/bin/bash\n\n" > /home/dev/.xinitrc
-printf "# For vmware copy/paste\n" >> /home/dev/.xinitrc
-printf "vmware-user\n\n" >> /home/dev/.xinitrc
-printf "exec i3" >> /home/dev/.xinitrc
+# install default file browser
+sudo pacman -S --noconfirm nemo
 
+# install default fonts
+sudo pacman -S --noconfirm ttf-dejavu ttf-font-awesome
+# ttf-ubuntu-font-family
+# ttf-font-awesome
+# ttf-mplus
+# ttf-dejavu
+# ttf-fira-mono
+# ttf-fira-sans
+# sudo pacman -S --noconfirm openbox obconf lxappearance-obconf openbox-themes
