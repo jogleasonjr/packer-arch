@@ -13,4 +13,10 @@ cd trizen
 makepkg --noconfirm -si
 
 # Web Browswer
-sudo pacman -S --noconfirm firefox
+sudo pacman -S --noconfirm firefox qutebrowser
+
+# install default terminal
+sudo pacman -S --noconfirm termite
+
+# install default file browser
+sudo pacman -S --noconfirm nemo

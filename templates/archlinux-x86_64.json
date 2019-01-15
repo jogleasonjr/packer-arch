@@ -83,7 +83,7 @@
         "cpus": "2",
         "disk_size": "40000",
         "headless": "false",
-        "memory": "512",
+        "memory": "4096",
         "iso_url": "http://mirrors.edge.kernel.org/archlinux/iso/2019.01.01/archlinux-2019.01.01-x86_64.iso",
         "iso_checksum": "494d2ca93841870d42412ffba47dd114db034924",
         "iso_checksum_type": "sha1",

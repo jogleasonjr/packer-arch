@@ -1,0 +1,5 @@
+[options]
+font = Fira Code 9
+
+[colors]
+background = rgba(0, 0, 0, 0.80)

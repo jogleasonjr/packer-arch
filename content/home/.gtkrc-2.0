@@ -1,7 +1,7 @@
 include "/home/dev/.gtkrc-2.0.mine"
 gtk-theme-name="Arc-Darker"
 gtk-icon-theme-name="Arc"
-gtk-font-name="DejaVu Sans 10"
+gtk-font-name="Fira Sans Book 10"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
