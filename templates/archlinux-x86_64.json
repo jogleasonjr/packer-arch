@@ -12,7 +12,7 @@
             "skip_compaction": "true",
             "headless": "{{user `headless`}}",
             "http_directory": "http",
-            "boot_wait": "5s",
+            "boot_wait": "{{user `boot_wait`}}",
             "boot_command": [
                 "<enter><wait10><wait10><wait10><wait10>",
                 "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
@@ -28,6 +28,43 @@
             }
         },
         {
+            "type": "virtualbox-iso",
+            "boot_wait": "{{user `boot_wait`}}",
+            "http_directory": "http",
+            "disk_size": "{{user `disk_size`}}",
+            "guest_os_type": "ArchLinux_64",
+            "output_directory": "output/{{user `vm_name`}}",
+            "iso_checksum": "{{user `iso_checksum`}}",
+            "iso_checksum_type": "{{user `iso_checksum_type`}}",
+            "iso_url": "{{user `iso_url`}}",
+            "ssh_username": "dev",
+            "ssh_password": "piranha",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "sudo systemctl poweroff",
+            "guest_additions_mode": "disable",
+            "headless": "false",
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "{{user `memory`}}"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "{{user `cpus`}}"
+                ]
+            ],
+            "boot_command": [
+                "<enter><wait10><wait10><wait10><wait10><wait10><enter><enter>",
+                "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
+                "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
+            ]
+        },
+        {
             "type": "qemu",
             "iso_url": "{{user `iso_url`}}",
             "iso_checksum": "{{user `iso_checksum`}}",
@@ -40,7 +77,7 @@
             "http_directory": "http",
             "net_device": "virtio-net",
             "disk_interface": "virtio",
-            "boot_wait": "10s",
+            "boot_wait": "{{user `boot_wait`}}",
             "boot_command": [
                 "<enter><wait10><wait10><wait10><wait10>",
                 "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
@@ -72,9 +109,27 @@
             "type": "shell",
             "scripts": [
                 "scripts/tools.sh",
-                "scripts/vmware.sh",
                 "scripts/i3.sh",
-                "scripts/theme.sh",
+                "scripts/theme.sh"
+            ]
+        },
+        {
+            "type": "shell",
+            "only": ["vmware-iso"],
+            "scripts": [
+                "scripts/vmware.sh"
+            ]
+        },
+        {
+            "type": "shell",
+            "only": ["virtualbox-iso"],
+            "scripts": [
+                "scripts/virtualbox.sh"
+            ]
+        },
+        {
+            "type": "shell",
+            "scripts": [
                 "scripts/cleanup.sh"
             ]
         }
@@ -88,6 +143,7 @@
         "iso_checksum": "494d2ca93841870d42412ffba47dd114db034924",
         "iso_checksum_type": "sha1",
         "ssh_timeout": "60m",
+        "boot_wait": "10s",
         "vm_name": "archlinux-x86_64-packer-{{timestamp}}"
     }
 }

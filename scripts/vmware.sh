@@ -3,10 +3,6 @@
 set -e
 set -x
 
-if [ "$PACKER_BUILDER_TYPE" != "vmware-iso" ]; then
-  exit 0
-fi
-
 # for basic vmware functionality
 sudo pacman -S --noconfirm open-vm-tools
 
@@ -20,4 +16,6 @@ sudo pacman -S --noconfirm gtkmm3
 sudo systemctl enable vmtoolsd
 sudo systemctl enable vmware-vmblock-fuse
 
-sudo mkdir -p /mnt/hgfs
+# startup the guest tools when the user starts X
+# this line just replaces "#GUEST_TOOLS_HERE" with "vmware-user" in .xinitrc
+sed -i '/#GUEST_TOOLS_HERE/c vmware-user' ~/.xinitrc

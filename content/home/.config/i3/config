@@ -26,7 +26,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+t exec nemo
-bindsym $mod+backslash exec qutebrowser
+bindsym $mod+backslash exec firefox
 
 # change focus
 bindsym $mod+h focus left
@@ -165,7 +165,7 @@ gaps inner 10
 smart_gaps on
 
 # disable titlebars
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # restore color scheme
 # exec_always --no-startup-id wal -i ~/pictures/wallpapers/scenic.jpg -a 90

@@ -3,10 +3,6 @@
 set -e
 set -x
 
-if [ "$PACKER_BUILDER_TYPE" != "vmware-iso" ]; then
-  exit 0
-fi
-
 # install xorg and i3+defaults
 sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps i3status rofi
 # set up `startx`

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# For vmware copy/paste
-vmware-user
+# For vmware/virtualbox host integration
+#GUEST_TOOLS_HERE
 
 exec i3
