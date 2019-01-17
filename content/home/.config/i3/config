@@ -177,20 +177,6 @@ smart_borders on
 # start compositor for sweet transparency 
 exec --no-startup-id compton
 
-# colors GLHF
-# set $highlight #009999
-# set $dim #003333
-# set $alert #330000
-# set $unused  #990000
-
-# class                 border  backgr. text    indicator child_border
-# client.focused          $unused $unused $unused $unused   $highlight
-# client.focused_inactive $unused $unused $unused $unused   $highlight
-# client.unfocused        $unused $unused $unused $unused   $dim
-# client.urgent           $unused $unused $unused $unused   $alert
-# client.placeholder      $unused $unused $unused $unused   $unused
-# client.background       $unused
-
 set_from_resource $normal_bg i3wm.color0
 set_from_resource $normal_fg i3wm.color8
 set_from_resource $focus_bg i3wm.color1
@@ -205,3 +191,4 @@ client.unfocused        $normal_bg $normal_bg $normal_fg $normal_bg $normal_bg
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
+
