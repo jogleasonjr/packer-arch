@@ -166,26 +166,42 @@ smart_gaps on
 
 # disable titlebars
 for_window [class="^.*"] border pixel 2
+smart_borders on
 
 # restore color scheme
 # exec_always --no-startup-id wal -i ~/pictures/wallpapers/scenic.jpg -a 90
 
 # set  background image
-exec_always --no-startup-id feh --bg-fill ~/wallpapers/background.jpg
+# exec_always --no-startup-id feh --bg-fill ~/wallpapers/background.jpg
 
 # start compositor for sweet transparency 
 exec --no-startup-id compton
 
 # colors GLHF
-set $highlight #009999
-set $dim #003333
-set $alert #330000
-set $unused  #990000
+# set $highlight #009999
+# set $dim #003333
+# set $alert #330000
+# set $unused  #990000
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $unused $unused $unused $unused   $highlight
-client.focused_inactive $unused $unused $unused $unused   $highlight
-client.unfocused        $unused $unused $unused $unused   $dim
-client.urgent           $unused $unused $unused $unused   $alert
-client.placeholder      $unused $unused $unused $unused   $unused
-client.background       $unused
+# client.focused          $unused $unused $unused $unused   $highlight
+# client.focused_inactive $unused $unused $unused $unused   $highlight
+# client.unfocused        $unused $unused $unused $unused   $dim
+# client.urgent           $unused $unused $unused $unused   $alert
+# client.placeholder      $unused $unused $unused $unused   $unused
+# client.background       $unused
+
+set_from_resource $normal_bg i3wm.color0
+set_from_resource $normal_fg i3wm.color8
+set_from_resource $focus_bg i3wm.color1
+set_from_resource $focus_fg i3wm.color0
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $focus_bg  $focus_bg  $focus_fg  $focus_bg  $focus_bg
+# client.focused_inactive #ff0000 #5f676a #ffffff #484e50   #5f676a
+client.focused_inactive $normal_bg $normal_bg $normal_fg $normal_bg $normal_bg
+client.unfocused        $normal_bg $normal_bg $normal_fg $normal_bg $normal_bg
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff

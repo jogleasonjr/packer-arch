@@ -109,8 +109,7 @@
             "type": "shell",
             "scripts": [
                 "scripts/tools.sh",
-                "scripts/i3.sh",
-                "scripts/theme.sh"
+                "scripts/desktop.sh"
             ]
         },
         {

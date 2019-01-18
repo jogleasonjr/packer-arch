@@ -12,7 +12,3 @@ yes | sudo pacman -Scc
 
 # Remove machine-id: see https://github.com/archlinux/arch-boxes/issues/25
 sudo rm /etc/machine-id
-
-id
-id
-id
