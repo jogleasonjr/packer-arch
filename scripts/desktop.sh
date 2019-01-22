@@ -16,7 +16,8 @@ sudo pacman -S --noconfirm compton feh python-pywal
 sudo pacman -S --noconfirm arc-gtk-theme arc-icon-theme lxappearance 
 
 # install fonts
-sudo pacman -S --noconfirm ttf-dejavu ttf-font-awesome ttf-fira-mono ttf-fira-sans ttf-fira-code
+sudo pacman -S --noconfirm ttf-dejavu ttf-font-awesome
+trizen -S --noconfirm ttf-mononoki
 # ttf-ubuntu-font-family
 # ttf-font-awesome
 # ttf-mplus
