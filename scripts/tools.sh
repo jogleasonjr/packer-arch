@@ -13,7 +13,7 @@ cd trizen
 makepkg --noconfirm -si
 
 # Web Browswer
-sudo pacman -S --noconfirm firefox
+sudo pacman -S --noconfirm chromium
 
 # install default terminal
 sudo pacman -S --noconfirm termite

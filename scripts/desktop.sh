@@ -7,7 +7,11 @@ set -x
 cp -ra /tmp/content/home/. ~/
 
 # install xorg and i3+defaults
-sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps i3status rofi
+sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps rofi
+
+# install polybar
+chmod +x ~/.config/polybar/config
+trizen -S --noconfirm polybar
 
 # install compositor and background image utilities
 sudo pacman -S --noconfirm compton feh python-pywal
@@ -25,9 +29,11 @@ trizen -S --noconfirm ttf-mononoki
 # ttf-fira-mono
 # ttf-fira-sans
 
+# install polybar
+trizen -S --noconfirm polybar
 
-# install toys
-trizen -S --noconfirm asciiquarium fortune-mod cowsay asciiquarium tty-clock cava mps-youtube
+# install terminal toys
+trizen -S --noconfirm asciiquarium fortune-mod lolcat cowsay asciiquarium tty-clock cmatrix neofetch htop
 
 # set theme (will reload with `wal -R` in .xinitrc)
 wal -i /home/dev/wallpapers/scenic.jpg

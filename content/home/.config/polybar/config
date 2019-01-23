@@ -1,0 +1,187 @@
+[colors]
+
+foreground = ${xrdb:color8:#222}
+background = ${xrdb:color0:#222}
+
+foreground-inverse = ${xrdb:color0:#222}
+background-inverse = ${xrdb:color1:#222}
+
+foreground-faded = ${xrdb:color2:#222}
+background-raised = ${xrdb:color0:#222}
+
+foreground-prefix = ${xrdb:color2:#222}
+
+warning = ${xrdb:color3:#222}
+active-led = ${xrdb:color1:#222}
+
+[bar/main]
+monitor = ${env:MONITOR:Virtual1}
+width = 100%
+height = 30
+bottom = false
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; thickness of line under active workspace
+line-size = 2
+
+; overall padding around the bar
+border-size = 0
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+
+font-0 = mononoki:pixelsize=11;3
+font-1 = unifont:fontformat=truetype:size=8:weight=bold:antialias=false;0
+font-2 = "Wuncon siji:pixelsize=8;1"
+font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
+
+modules-left = i3
+modules-center = xwindow
+;modules-right = battery pulseaudio wlan date 
+modules-right = pulseaudio lan date 
+
+;tray-position = center
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+[bar/secondary]
+inherit = bar/main
+monitor = ${env:MONITOR:Virtual2}
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+;https://fontawesome.com/icons?d=gallery&s=solid&m=free
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;♛
+;ws-icon-2 = 3;♜
+;ws-icon-3 = 4;♝
+;ws-icon-4 = 5;♞
+;ws-icon-default = ♟
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+; focused = Active workspace on focused monitor
+;label-focused = %index%: %icon%
+label-focused = %index%
+label-focused-foreground = ${colors.foreground-inverse}
+label-focused-background = ${colors.background-inverse}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background-raised}
+label-unfocused-padding = ${self.label-focused-padding}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-foreground = ${colors.background-inverse}
+label-visible-background = ${colors.foreground-inverse}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.warning}
+label-urgent-padding = ${self.label-focused-padding}
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+
+[module/battery]
+type = internal/battery
+
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-discharging = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+
+format-charghing = <animation-charging> <label-charging>
+
+label-charging = %percentage%%
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+[module/lan]
+type = internal/network
+interface = eth0
+interval = 30.0
+
+format-connected = <label-connected>
+label-connected =  %local_ip%
+
+format-disconnected = <label-disconnected>
+label-disconnected = " disconnected"
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected =  %essid%
+
+format-disconnected = <label-disconnected>
+label-disconnected = " disconnected"
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%A %m-%d-%Y"
+date-alt = %m-%d-%Y
+time = %H:%M:%S
+time-alt = %H:%M
+
+label =  %date%   %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume> 
+label-volume = %percentage%%
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+label-muted =  muted
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

@@ -3,7 +3,7 @@
 set -e
 set -x
 
-ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 
 echo 'archlinux' > /etc/hostname
 
