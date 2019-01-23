@@ -25,6 +25,10 @@ trizen -S --noconfirm ttf-mononoki
 # ttf-fira-mono
 # ttf-fira-sans
 
+
+# install toys
+trizen -S --noconfirm asciiquarium fortune-mod cowsay asciiquarium tty-clock cava mps-youtube
+
 # set theme (will reload with `wal -R` in .xinitrc)
 wal -i /home/dev/wallpapers/scenic.jpg
 echo "cat ~/.cache/wal/sequences" >> ~/.bashrc
