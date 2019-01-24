@@ -20,3 +20,5 @@ sudo pacman -S --noconfirm termite
 
 # install default file browser
 sudo pacman -S --noconfirm nemo
+
+# set up aliases

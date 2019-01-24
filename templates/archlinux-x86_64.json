@@ -11,6 +11,7 @@
             "disk_size": "{{user `disk_size`}}",
             "skip_compaction": "true",
             "headless": "{{user `headless`}}",
+            "sound": "true",
             "http_directory": "http",
             "boot_wait": "{{user `boot_wait`}}",
             "boot_command": [
@@ -44,6 +45,7 @@
             "shutdown_command": "sudo systemctl poweroff",
             "guest_additions_mode": "disable",
             "headless": "false",
+            "sound": "true",
             "vboxmanage": [
                 [
                     "modifyvm",
@@ -114,6 +116,12 @@
         },
         {
             "type": "shell",
+            "inline": [
+                "chmod +x ~/.scripts/*"
+            ]
+        },
+        {
+            "type": "shell",
             "only": ["vmware-iso"],
             "scripts": [
                 "scripts/vmware.sh"
@@ -129,6 +137,9 @@
         {
             "type": "shell",
             "scripts": [
+                "scripts/toys.sh",
+                "scripts/audio.sh",
+                "scripts/docker.sh",
                 "scripts/cleanup.sh"
             ]
         }

@@ -10,7 +10,7 @@ cp -ra /tmp/content/home/. ~/
 sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps rofi
 
 # install polybar
-chmod +x ~/.config/polybar/config
+chmod +x ~/.config/polybar/launch.sh
 trizen -S --noconfirm polybar
 
 # install compositor and background image utilities
@@ -29,12 +29,7 @@ trizen -S --noconfirm ttf-mononoki
 # ttf-fira-mono
 # ttf-fira-sans
 
-# install polybar
-trizen -S --noconfirm polybar
-
-# install terminal toys
-trizen -S --noconfirm asciiquarium fortune-mod lolcat cowsay asciiquarium tty-clock cmatrix neofetch htop
-
 # set theme (will reload with `wal -R` in .xinitrc)
 wal -i /home/dev/wallpapers/scenic.jpg
 echo "cat ~/.cache/wal/sequences" >> ~/.bashrc
+

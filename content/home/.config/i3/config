@@ -23,7 +23,7 @@ floating_modifier $mod
 bindsym $mod+q kill
 
 # appplication shortcuts
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -run-list-command ". ~/.bash_aliases" -run-command "/bin/bash -i -c '{cmd}'" -show run
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+t exec nemo
 bindsym $mod+backslash exec chromium
@@ -170,6 +170,13 @@ bindsym $mod+Shift+i  gaps outer current set 20; gaps inner current set 30
 
 # disable titlebars
 for_window [class="^.*"] border pixel 2
+
+# show titlebars for terminals only
+# for_window [class="Termite"] border normal 2
+
+# shortcut to rename title bars
+# bindsym $mod+Shift+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry`
+
 smart_borders on
 
 # start compositor for sweet transparency 
@@ -177,6 +184,7 @@ exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
 # start bar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id wal -R
 
 set_from_resource $normal_bg i3wm.color0 #FFFFFF
 set_from_resource $normal_fg i3wm.color8 #FFFFFF
