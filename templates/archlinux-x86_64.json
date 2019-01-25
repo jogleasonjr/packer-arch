@@ -140,6 +140,7 @@
                 "scripts/toys.sh",
                 "scripts/audio.sh",
                 "scripts/docker.sh",
+                "scripts/dotnet.sh",
                 "scripts/cleanup.sh"
             ]
         }
