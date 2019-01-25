@@ -52,7 +52,8 @@ modules-center = xwindow
 ;modules-right = battery pulseaudio wlan date 
 modules-right = pulseaudio lan date 
 
-;tray-position = center
+tray-position = right
+tray-padding = 0
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
