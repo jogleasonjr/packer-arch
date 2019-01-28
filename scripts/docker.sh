@@ -4,7 +4,7 @@ set -e
 set -x
 
 # install docker
-sudo pacman -S --noconfirm docker
+sudo pacman -S --noconfirm docker docker-compose
 
 # enable service
 sudo systemctl enable docker
