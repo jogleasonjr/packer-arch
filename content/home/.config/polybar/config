@@ -47,8 +47,8 @@ font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = i3
-modules-center = xwindow
+modules-left = i3 xwindow
+modules-center = 
 ;modules-right = battery pulseaudio wlan date 
 modules-right = pulseaudio lan date 
 

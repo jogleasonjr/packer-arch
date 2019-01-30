@@ -2,6 +2,7 @@
     "builders": [
         {
             "type": "vmware-iso",
+            "name": "vmware-iso-desktop",
             "guest_os_type": "other4xlinux-64",
             "iso_url": "{{user `iso_url`}}",
             "iso_checksum": "{{user `iso_checksum`}}",
@@ -19,7 +20,6 @@
                 "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
                 "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
             ],
-            "ssh_timeout": "{{user `ssh_timeout`}}",
             "ssh_username": "dev",
             "ssh_password": "piranha",
             "shutdown_command": "sudo systemctl poweroff",
@@ -29,7 +29,35 @@
             }
         },
         {
-            "type": "virtualbox-iso",
+            "type": "vmware-iso",
+            "name": "vmware-iso-server",
+            "guest_os_type": "other4xlinux-64",
+            "iso_url": "{{user `iso_url`}}",
+            "iso_checksum": "{{user `iso_checksum`}}",
+            "iso_checksum_type": "{{user `iso_checksum_type`}}",
+            "output_directory": "output/{{user `vm_name`}}",
+            "vm_name": "{{user `vm_name`}}",
+            "disk_size": "{{user `disk_size`}}",
+            "skip_compaction": "true",
+            "headless": "{{user `headless`}}",
+            "sound": "true",
+            "http_directory": "http",
+            "boot_wait": "{{user `boot_wait`}}",
+            "boot_command": [
+                "<enter><wait10><wait10><wait10><wait10>",
+                "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
+                "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
+            ],
+            "ssh_username": "dev",
+            "ssh_password": "piranha",
+            "shutdown_command": "sudo systemctl poweroff",
+            "vmx_data": {
+                "memsize": "{{user `memory`}}",
+                "numvcpus": "{{user `cpus`}}"
+            }
+        },
+        {
+            "type": "virtualbox-iso-desktop",
             "boot_wait": "{{user `boot_wait`}}",
             "http_directory": "http",
             "disk_size": "{{user `disk_size`}}",
@@ -41,7 +69,6 @@
             "ssh_username": "dev",
             "ssh_password": "piranha",
             "ssh_port": 22,
-            "ssh_wait_timeout": "10000s",
             "shutdown_command": "sudo systemctl poweroff",
             "guest_additions_mode": "disable",
             "headless": "false",
@@ -68,6 +95,7 @@
         },
         {
             "type": "qemu",
+            "name": "qemu-server",
             "iso_url": "{{user `iso_url`}}",
             "iso_checksum": "{{user `iso_checksum`}}",
             "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -85,7 +113,6 @@
                 "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
                 "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
             ],
-            "ssh_timeout": "{{user `ssh_timeout`}}",
             "ssh_username": "dev",
             "ssh_password": "piranha",
             "shutdown_command": "sudo systemctl poweroff",
@@ -104,32 +131,35 @@
     "provisioners": [
         {
             "type": "file",
+            "only": ["vmware-iso-desktop", "virtualbox-iso-desktop"],
             "source": "content",
             "destination": "/tmp"
         },
         {
             "type": "shell",
             "scripts": [
-                "scripts/tools.sh",
-                "scripts/desktop.sh"
+                "scripts/cli_tools.sh",
+                "scripts/cli_toys.sh"
             ]
         },
         {
             "type": "shell",
-            "inline": [
-                "chmod +x ~/.scripts/*"
+            "only": ["vmware-iso-desktop", "virtualbox-iso-desktop"],
+            "scripts": [
+                "scripts/desktop.sh",
+                "scripts/audio.sh"
             ]
         },
         {
             "type": "shell",
-            "only": ["vmware-iso"],
+            "only": ["vmware-iso-desktop"],
             "scripts": [
                 "scripts/vmware.sh"
             ]
         },
         {
             "type": "shell",
-            "only": ["virtualbox-iso"],
+            "only": ["virtualbox-iso-desktop"],
             "scripts": [
                 "scripts/virtualbox.sh"
             ]
@@ -137,10 +167,6 @@
         {
             "type": "shell",
             "scripts": [
-                "scripts/toys.sh",
-                "scripts/audio.sh",
-                "scripts/docker.sh",
-                "scripts/dotnet.sh",
                 "scripts/cleanup.sh"
             ]
         }
@@ -153,8 +179,7 @@
         "iso_url": "http://mirrors.edge.kernel.org/archlinux/iso/2019.01.01/archlinux-2019.01.01-x86_64.iso",
         "iso_checksum": "494d2ca93841870d42412ffba47dd114db034924",
         "iso_checksum_type": "sha1",
-        "ssh_timeout": "60m",
         "boot_wait": "10s",
-        "vm_name": "archlinux-x86_64-packer-{{timestamp}}"
+        "vm_name": "archlinux-{{isotime \"2006-01-02_15_04_05\"}}"
     }
 }

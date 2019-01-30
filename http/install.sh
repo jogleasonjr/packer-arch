@@ -34,10 +34,10 @@ pacman -S reflector --noconfirm
 reflector --verbose --country US --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # If we know we have a local package cache, smoosh it at the top of the mirror list
-cacheServer="http://192.168.26.146:7070/robots.txt";
-if curl -s --head  --request GET $cacheServer | grep "200 OK" > /dev/null; then 
+cacheServer="http://192.168.26.146:7070";
+if curl -s --head  --request GET $cacheServer/robots.txt | grep "200 OK" > /dev/null; then 
    echo "Cache server $cacheServer is UP"
-   sed -i '1iServer = http://192.168.26.146:7070/$repo/os/$arch' /etc/pacman.d/mirrorlist
+   sed -i '1iServer = '"$cacheServer"'/$repo/os/$arch' /etc/pacman.d/mirrorlist
 else
    echo "Cache server $cacheServer is DOWN"
 fi
