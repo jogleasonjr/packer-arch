@@ -26,7 +26,8 @@
             "shutdown_command": "sudo systemctl poweroff",
             "vmx_data": {
                 "memsize": "{{user `memory`}}",
-                "numvcpus": "{{user `cpus`}}"
+                "numvcpus": "{{user `cpus`}}",
+                "mks.enable3d": "true"
             }
         },
         {
