@@ -31,10 +31,10 @@ grep '^#Server' /tmp/mirrorlist | sort -R | head -n 50 | sed 's/^#//' > /etc/pac
 # sed -i '1iServer = http://192.168.26.134:7070/$repo/os/$arch' /etc/pacman.d/mirrorlist
 pacman -Sy --noconfirm
 pacman -S reflector --noconfirm
-reflector --verbose --country US --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --verbose --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 # If we know we have a local package cache, smoosh it at the top of the mirror list
-cacheServer="http://192.168.26.146:7070";
+cacheServer="https://archlinux.jtpk.io";
 if curl -s --head  --request GET $cacheServer/robots.txt | grep "200 OK" > /dev/null; then 
    echo "Cache server $cacheServer is UP"
    sed -i '1iServer = '"$cacheServer"'/$repo/os/$arch' /etc/pacman.d/mirrorlist

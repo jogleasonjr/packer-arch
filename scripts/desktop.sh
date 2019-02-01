@@ -42,6 +42,6 @@ sudo pacman -S --noconfirm nemo
 
 
 # set theme (will reload with `wal -R` in .xinitrc)
-wal -i /home/dev/wallpapers/scenic.jpg
+wal -i /home/dev/.wallpapers/scenic.jpg
 echo "cat ~/.cache/wal/sequences" >> ~/.bashrc
 

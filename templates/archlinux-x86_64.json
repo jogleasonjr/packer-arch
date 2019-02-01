@@ -22,6 +22,7 @@
             ],
             "ssh_username": "dev",
             "ssh_password": "piranha",
+            "ssh_timeout": "{{user `ssh_timeout`}}",
             "shutdown_command": "sudo systemctl poweroff",
             "vmx_data": {
                 "memsize": "{{user `memory`}}",
@@ -40,7 +41,6 @@
             "disk_size": "{{user `disk_size`}}",
             "skip_compaction": "true",
             "headless": "{{user `headless`}}",
-            "sound": "true",
             "http_directory": "http",
             "boot_wait": "{{user `boot_wait`}}",
             "boot_command": [
@@ -50,6 +50,7 @@
             ],
             "ssh_username": "dev",
             "ssh_password": "piranha",
+            "ssh_timeout": "{{user `ssh_timeout`}}",
             "shutdown_command": "sudo systemctl poweroff",
             "vmx_data": {
                 "memsize": "{{user `memory`}}",
@@ -69,6 +70,7 @@
             "ssh_username": "dev",
             "ssh_password": "piranha",
             "ssh_port": 22,
+            "ssh_wait_timeout": "{{user `ssh_timeout`}}",
             "shutdown_command": "sudo systemctl poweroff",
             "guest_additions_mode": "disable",
             "headless": "false",
@@ -115,6 +117,7 @@
             ],
             "ssh_username": "dev",
             "ssh_password": "piranha",
+            "ssh_timeout": "{{user `ssh_timeout`}}",
             "shutdown_command": "sudo systemctl poweroff",
             "qemuargs": [
                 [
@@ -179,6 +182,7 @@
         "iso_url": "http://mirrors.edge.kernel.org/archlinux/iso/2019.01.01/archlinux-2019.01.01-x86_64.iso",
         "iso_checksum": "494d2ca93841870d42412ffba47dd114db034924",
         "iso_checksum_type": "sha1",
+        "ssh_timeout": "10m",
         "boot_wait": "10s",
         "vm_name": "archlinux-{{isotime \"2006-01-02_15_04_05\"}}"
     }

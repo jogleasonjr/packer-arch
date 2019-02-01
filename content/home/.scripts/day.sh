@@ -1,3 +1,3 @@
 #!/bin/bash
 
-wal -i ~/wallpapers/scenic.jpg
+wal -i ~/.wallpapers/scenic.jpg
