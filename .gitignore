@@ -3,4 +3,4 @@ todo.md
 isos
 packer_cache/
 .cfg
-content/home/private
+.private/
