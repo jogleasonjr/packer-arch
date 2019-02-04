@@ -171,6 +171,7 @@
         {
             "type": "shell",
             "scripts": [
+                "scripts/private.sh",
                 "scripts/cleanup.sh"
             ]
         }
