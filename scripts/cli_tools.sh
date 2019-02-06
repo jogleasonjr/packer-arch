@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Basic tooling
-sudo pacman -S --noconfirm vim git
+sudo pacman -S --noconfirm vim git wget ranger
 
 # Install trizen (AUR helper)
 mkdir -p /home/dev/git && cd $_

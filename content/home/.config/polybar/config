@@ -1,9 +1,9 @@
 [colors]
 
-foreground = ${xrdb:color8:#222}
+foreground = ${xrdb:color7:#222}
 background = ${xrdb:color0:#222}
 
-foreground-inverse = ${xrdb:color0:#222}
+foreground-inverse = ${xrdb:color0:#222}ix32
 background-inverse = ${xrdb:color1:#222}
 
 foreground-faded = ${xrdb:color2:#222}
