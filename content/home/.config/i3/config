@@ -178,7 +178,7 @@ for_window [class="^.*"] border pixel 2
 # bindsym $mod+Shift+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry`
 
 # smart = disable border when one window is on screen
-smart_borders off
+smart_borders on
 
 # start compositor for sweet transparency 
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
