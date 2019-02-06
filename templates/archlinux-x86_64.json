@@ -150,8 +150,8 @@
             "type": "shell",
             "only": ["vmware-iso-desktop", "virtualbox-iso-desktop"],
             "scripts": [
-                "scripts/desktop.sh",
-                "scripts/audio.sh"
+                "scripts/audio.sh",
+                "scripts/desktop.sh"
             ]
         },
         {

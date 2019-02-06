@@ -3,7 +3,7 @@
 foreground = ${xrdb:color7:#222}
 background = ${xrdb:color0:#222}
 
-foreground-inverse = ${xrdb:color0:#222}ix32
+foreground-inverse = ${xrdb:color0:#222}
 background-inverse = ${xrdb:color1:#222}
 
 foreground-faded = ${xrdb:color2:#222}
@@ -71,25 +71,23 @@ index-sort = true
 wrapping-scroll = false
 
 ;https://fontawesome.com/icons?d=gallery&s=solid&m=free
-;ws-icon-0 = 1;
-;ws-icon-1 = 2;♛
-;ws-icon-2 = 3;♜
-;ws-icon-3 = 4;♝
-;ws-icon-4 = 5;♞
-;ws-icon-default = ♟
+ws-icon-0 = "1; "
+ws-icon-1 = "2; "
+ws-icon-2 = "3; "
+ws-icon-3 = "4; "
+;ws-icon-default = " "
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
 ; focused = Active workspace on focused monitor
-;label-focused = %index%: %icon%
-label-focused = %index%
+label-focused = %index%%icon%
 label-focused-foreground = ${colors.foreground-inverse}
 label-focused-background = ${colors.background-inverse}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %index%%{F#777777}%icon%%{F-}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.background-raised}
 label-unfocused-padding = ${self.label-focused-padding}
@@ -101,10 +99,14 @@ label-visible-background = ${colors.foreground-inverse}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %index% 
 label-urgent-background = ${colors.warning}
 label-urgent-padding = ${self.label-focused-padding}
 
+; Separator in between workspaces
+label-separator = |
+label-separator-padding = 0
+label-separator-foreground = ${colors.background-inverse}
 
 [module/xwindow]
 type = internal/xwindow
@@ -140,7 +142,7 @@ interface = eth0
 interval = 30.0
 
 format-connected = <label-connected>
-label-connected =  %local_ip%
+label-connected = %{F#777777} %{F-}%local_ip%
 
 format-disconnected = <label-disconnected>
 label-disconnected = " disconnected"
@@ -166,12 +168,12 @@ date-alt = %m-%d-%Y
 time = %H:%M:%S
 time-alt = %H:%M
 
-label =  %date%   %time%
+label = %{F#777777} %{F-}%date%  %{F#777777} %{F-}%time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume> 
+format-volume = %{F#777777}<ramp-volume>%{F-} <label-volume> 
 label-volume = %percentage%%
 
 ramp-volume-0 = 
