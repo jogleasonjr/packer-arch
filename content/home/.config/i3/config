@@ -177,7 +177,8 @@ for_window [class="^.*"] border pixel 2
 # shortcut to rename title bars
 # bindsym $mod+Shift+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry`
 
-smart_borders on
+# smart = disable border when one window is on screen
+smart_borders off
 
 # start compositor for sweet transparency 
 exec --no-startup-id compton --config ~/.config/compton/compton.conf

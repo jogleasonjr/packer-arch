@@ -93,7 +93,7 @@ label-unfocused-background = ${colors.background-raised}
 label-unfocused-padding = ${self.label-focused-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %index%%icon%
 label-visible-foreground = ${colors.background-inverse}
 label-visible-background = ${colors.foreground-inverse}
 label-visible-padding = ${self.label-focused-padding}
@@ -106,7 +106,7 @@ label-urgent-padding = ${self.label-focused-padding}
 ; Separator in between workspaces
 label-separator = |
 label-separator-padding = 0
-label-separator-foreground = ${colors.background-inverse}
+label-separator-foreground = ${colors.foreground-prefix}
 
 [module/xwindow]
 type = internal/xwindow
