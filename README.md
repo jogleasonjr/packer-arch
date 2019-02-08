@@ -1,6 +1,7 @@
 ## Packer-Arch
 
-Packer template and scripts to generate Arch Linux virtual machines to my liking. These include:
+Packer template and scripts to generate Arch Linux virtual machines to my liking. This includes:
+
   * VMWare/VirtualBox tools (for copy/paste and screen resizing)
   * i3-gaps window manager
   * rofi launcher (try typing `day` or `night` into it)
