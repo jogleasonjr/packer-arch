@@ -3,11 +3,11 @@
 Packer template and scripts to generate Arch Linux virtual machines to my liking. This includes:
 
   * VMWare/VirtualBox tools (for copy/paste and screen resizing)
-  * i3-gaps window manager
-  * rofi launcher (try typing `day` or `night` into it)
-  * compton compositor
-  * termite terminal
-  * polybar
+  * [i3-gaps](https://github.com/Airblader/i3) window manager
+  * [rofi](https://github.com/DaveDavenport/rofi) launcher (try typing `day` or `night` into it)
+  * [compton](https://github.com/chjj/compton) compositor
+  * [termite](https://github.com/thestinger/termite) terminal
+  * [polybar](https://github.com/jaagr/polybar)
   
 ## Day Mode
 ![](https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/day_mode.png)
