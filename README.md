@@ -2,23 +2,27 @@
 
 Packer script to generate throwaway Arch Linux VMWare images to my liking. These include:
   * VMWare tools (for copy/paste and screen resizing)
-  * i3wm
-  * rofi
+  * i3-gaps window manager
+  * rofi launcher
+  * compton compositor
   * termite terminal
+  * polybar
 
 ## Building
 ```
-packer build --only=vmware-iso templates\archlinux-x86_64.json
+packer build --only=vmware-iso-desktop templates\archlinux-x86_64.json
+
+packer build --only=virtualbox-iso-desktop templates\archlinux-x86_64.json
 ```
 
 ## Running
 * Username: `dev`
 * Password: `piranha`
 
-Run `startx` to get to desktop.
+The virtual machine will start at the console. Log in with the credentials above then type `startx` to get to desktop.
 
 ## Defaults
 
 * **Meta+Enter** -> `terminal`
-* **Meta+\\** -> `firefox`
+* **Meta+\\** -> `chromium`
 * **Meta+D** -> `rofi` (application launcher)
