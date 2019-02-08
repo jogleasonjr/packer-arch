@@ -9,7 +9,10 @@ Packer script to generate throwaway Arch Linux VMWare images to my liking. These
   * polybar
   
 ## Day Mode
+![](https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/day_mode.png)
 
+## Night Mode
+![](https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/night_mode.png)
 
 ## Building
 ```
