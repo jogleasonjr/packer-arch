@@ -11,6 +11,9 @@ chmod +x ~/.scripts/*
 # install xorg and i3+defaults
 sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps rofi
 
+# install capslock/escape magic
+sudo pacman -S --noconfirm xmodmap xcape
+
 # install polybar
 chmod +x ~/.config/polybar/launch.sh
 trizen -S --noconfirm polybar

@@ -77,7 +77,7 @@ bindsym $mod+a focus parent
 
 # workspace "back and forth" e.g. alt-tab style behavior
 workspace_auto_back_and_forth yes
-bindsym $mod+tab workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -205,3 +205,7 @@ client.unfocused        $normal_bg $normal_bg $normal_fg $normal_bg $normal_bg
 
 client.background       #ffffff
 
+# make caps act as left windows key when held (for i3 shortcuts)
+exec --no-startup-id xmodmap ~/.config/xmodmap/config &
+# a quick press and release of windows key (now bound to caps) will act as escape press for vim
+exec --no-startup-id xcape -e "Hyper_L=Escape"
