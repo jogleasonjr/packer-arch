@@ -3,10 +3,13 @@
 Packer script to generate throwaway Arch Linux VMWare images to my liking. These include:
   * VMWare tools (for copy/paste and screen resizing)
   * i3-gaps window manager
-  * rofi launcher (try typing 'day' or 'night' into it)
+  * rofi launcher (try typing `day` or `night` into it)
   * compton compositor
   * termite terminal
   * polybar
+  
+## Day Mode
+
 
 ## Building
 ```
