@@ -1,15 +1,20 @@
 ## Packer-Arch
 
-Packer script to generate throwaway Arch Linux VMWare images to my liking. These include:
-  * VMWare tools (for copy/paste and screen resizing)
-  * i3-gaps window manager
-  * rofi launcher (try typing `day` or `night` into it)
-  * compton compositor
-  * termite terminal
-  * polybar
+Packer template and scripts to generate Arch Linux virtual machines to my liking. This includes:
+
+  * VMWare/VirtualBox tools (for copy/paste and screen resizing)
+  * [i3-gaps](https://github.com/Airblader/i3) window manager
+  * [rofi](https://github.com/DaveDavenport/rofi) launcher (try typing `day` or `night` into it)
+  * [compton](https://github.com/chjj/compton) compositor
+  * [termite](https://github.com/thestinger/termite) terminal
+  * [polybar](https://github.com/jaagr/polybar)
+  * [nemo](https://github.com/linuxmint/nemo) file browser
   
 ## Day Mode
+![](https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/day_mode.png)
 
+## Night Mode
+![](https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/night_mode.png)
 
 ## Building
 ```
@@ -29,3 +34,5 @@ The virtual machine will start at the console. Log in with the credentials above
 * **Meta+Enter** -> `terminal`
 * **Meta+\\** -> `chromium`
 * **Meta+D** -> `rofi` (application launcher)
+
+See `.config/i3/config` for the rest of the key commands.
