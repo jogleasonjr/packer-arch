@@ -8,6 +8,7 @@ Packer template and scripts to generate Arch Linux virtual machines to my liking
   * [compton](https://github.com/chjj/compton) compositor
   * [termite](https://github.com/thestinger/termite) terminal
   * [polybar](https://github.com/jaagr/polybar)
+  * [nemo](https://github.com/linuxmint/nemo) file browser
   
 ## Day Mode
 ![](https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/day_mode.png)
