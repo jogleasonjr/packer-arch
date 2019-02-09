@@ -9,10 +9,10 @@ cp -ra /tmp/content/home/. ~/
 chmod +x ~/.scripts/*
 
 # install xorg and i3+defaults
-sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps rofi
+sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-xmodmap i3-gaps rofi
 
 # install capslock/escape magic
-sudo pacman -S --noconfirm xmodmap xcape
+sudo pacman -S --noconfirm xcape
 
 # install polybar
 chmod +x ~/.config/polybar/launch.sh
