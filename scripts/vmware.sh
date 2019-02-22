@@ -19,3 +19,17 @@ sudo systemctl enable vmware-vmblock-fuse
 # startup the guest tools when the user starts X
 # this line just replaces "#GUEST_TOOLS_HERE" with "vmware-user" in .xinitrc
 sed -i '/#GUEST_TOOLS_HERE/c vmware-user' ~/.xinitrc
+
+
+
+
+
+# automatically run a script when user resizes the window
+sudo mkdir /usr/local/bin/xeventbind
+git clone https://github.com/jogleasonjr/xeventbind.git /usr/local/bin/xeventbind
+cd /usr/local/bin/xeventbind
+make
+
+# startup the guest tools when the user starts X
+# this line just replaces "#RESIZE_TOOLS_HERE" with a resize script in .xinitrc
+sed -i '/#RESIZE_TOOLS_HERE/c /usr/local/bin/xeventbind/xeventbind resolution ~/.scripts/resize_vm.sh' ~/.xinitrc &
