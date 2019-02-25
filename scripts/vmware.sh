@@ -26,9 +26,9 @@ sed -i '/#GUEST_TOOLS_HERE/c vmware-user' ~/.xinitrc
 
 # automatically run a script when user resizes the window
 sudo mkdir /usr/local/bin/xeventbind
-git clone https://github.com/jogleasonjr/xeventbind.git /usr/local/bin/xeventbind
+sudo git clone https://github.com/jogleasonjr/xeventbind.git /usr/local/bin/xeventbind
 cd /usr/local/bin/xeventbind
-make
+sudo make
 
 # startup the guest tools when the user starts X
 # this line just replaces "#RESIZE_TOOLS_HERE" with a resize script in .xinitrc
