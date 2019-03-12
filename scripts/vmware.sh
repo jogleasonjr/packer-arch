@@ -32,4 +32,4 @@ sudo make
 
 # startup the guest tools when the user starts X
 # this line just replaces "#RESIZE_TOOLS_HERE" with a resize script in .xinitrc
-sed -i '/#RESIZE_TOOLS_HERE/c /usr/local/bin/xeventbind/xeventbind resolution ~/.scripts/resize_vm.sh' ~/.xinitrc &
+sed -i '/#RESIZE_TOOLS_HERE/c /usr/local/bin/xeventbind/xeventbind resolution ~/.scripts/resize_vm.sh &' ~/.xinitrc 
