@@ -4,7 +4,7 @@
 
 SCRIPT=$1
 
-printf  "#!/bin/bash\n\n\n" >> $SCRIPT
+printf  "#!/bin/bash\n\nset -euxo pipefail\n\n\n" >> $SCRIPT
 
 chmod +x $SCRIPT
 

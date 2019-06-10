@@ -1,0 +1,37 @@
+<h2 id="packer-arch">Packer-Arch</h2>
+<p><a href="https://www.packer.io/">Packer</a> template and scripts to generate Arch Linux virtual machines to my liking. This includes:</p>
+<ul>
+<li>VMWare/VirtualBox tools (for copy/paste and screen resizing)</li>
+<li><a href="https://github.com/Airblader/i3">i3-gaps</a> window manager</li>
+<li><a href="https://github.com/DaveDavenport/rofi">rofi</a> launcher (try typing <code>day</code> or <code>night</code> into it)</li>
+<li><a href="https://github.com/chjj/compton">compton</a> compositor</li>
+<li><a href="https://github.com/thestinger/termite">termite</a> terminal</li>
+<li><a href="https://github.com/jaagr/polybar">polybar</a></li>
+<li><a href="https://github.com/linuxmint/nemo">nemo</a> file browser</li>
+</ul>
+<h2 id="day-mode">Day Mode</h2>
+<p><img src="https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/day_mode.png" /></p>
+<h2 id="night-mode">Night Mode</h2>
+<p><img src="https://github.com/jogleasonjr/packer-arch/raw/master/screenshots/night_mode.png" /></p>
+<h2 id="building">Building</h2>
+<pre><code>git clone https://github.com/jogleasonjr/packer-arch.git
+cd packer-arch
+packer build --only=vmware-iso-desktop templates\archlinux-x86_64.json
+
+# or for virtualbox
+packer build --only=virtualbox-iso-desktop templates\archlinux-x86_64.json</code></pre>
+<h2 id="running">Running</h2>
+<ul>
+<li>Username: <code>dev</code></li>
+<li>Password: <code>piranha</code></li>
+</ul>
+<p>The virtual machine will start at the console. Log in with the credentials above then type <code>startx</code> to get to desktop.</p>
+<h2 id="defaults">Defaults</h2>
+<p>Meta == Windows key or Command key</p>
+<ul>
+<li><strong>Meta+Enter</strong> -&gt; <code>terminal</code></li>
+<li><strong>Meta+\</strong> -&gt; <code>chromium</code></li>
+<li><strong>Meta+D</strong> -&gt; <code>rofi</code> (application launcher)</li>
+</ul>
+<p>See <code>.config/i3/config</code> for the rest of the key commands.</p>
+<p>For i3 shortcuts, the Caps Lock key has been rebound to act as the Meta/Win key. This allows Caps Lock to be used for any of the i3 shortcuts. In addition, for vim purposes, a quick press and release of the Caps Lock key will act as an escape key press. This is done using a combination of <code>xmodmap</code> and <code>xcape</code> near the <a href="#%20make%20caps%20act%20as%20left%20windows%20key%20when%20held%20(for%20i3%20shortcuts)">bottom of the i3 configuration file</a>.</p>
