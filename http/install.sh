@@ -49,9 +49,9 @@ do
 done
 
 
-# Install base packages, just enough for a basic system with ssh
+# Install base packages, just enough for a basic system
 pacman -Sy --noconfirm
-pacstrap /mnt base base-devel grub openssh sudo
+pacstrap /mnt base base-devel grub openssh sudo qemu-guest-agent
 swapon "${device}1"
 genfstab -p /mnt >> /mnt/etc/fstab
 swapoff "${device}1"

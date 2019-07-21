@@ -31,6 +31,41 @@
             }
         },
         {
+            "type": "proxmox",
+            "name": "proxmox-desktop",
+            "proxmox_url": "https://192.168.100.183:8006/api2/json",
+            "insecure_skip_tls_verify": true,
+            "username": "root@pam",
+            "password": "wookie!281*",
+            "node": "pxr7100",
+            "network_adapters": [
+              {
+                "bridge": "vmbr0"
+              }
+            ],
+            "disks": [
+              {
+                "type": "scsi",
+                "disk_size": "40G",
+                "storage_pool": "local-lvm",
+                "storage_pool_type": "lvm"
+              }
+            ],
+            "memory": 8192,
+            "cores": 4,
+            "iso_file": "local:iso/archlinux-2019.07.01-x86_64.iso",
+            "http_directory":"http",
+            "boot_wait": "{{user `boot_wait`}}",
+            "boot_command": [
+                "<enter><wait10><wait10><wait10><wait10>",
+                "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
+                "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
+            ],
+            "ssh_username": "dev",
+            "ssh_password": "piranha",
+            "ssh_timeout": "{{user `ssh_timeout`}}"
+        },
+        {
             "type": "vmware-iso",
             "name": "vmware-iso-server",
             "guest_os_type": "other4xlinux-64",
@@ -135,7 +170,7 @@
     "provisioners": [
         {
             "type": "file",
-            "only": ["vmware-iso-desktop", "virtualbox-iso-desktop"],
+            "only": ["vmware-iso-desktop", "virtualbox-iso-desktop", "proxmox-desktop"],
             "source": "content",
             "destination": "/tmp"
         },
@@ -148,7 +183,7 @@
         },
         {
             "type": "shell",
-            "only": ["vmware-iso-desktop", "virtualbox-iso-desktop"],
+            "only": ["vmware-iso-desktop", "virtualbox-iso-desktop", "proxmox-desktop"],
             "scripts": [
                 "scripts/audio.sh",
                 "scripts/desktop.sh"
@@ -157,6 +192,13 @@
         {
             "type": "shell",
             "only": ["vmware-iso-desktop"],
+            "scripts": [
+                "scripts/vmware.sh"
+            ]
+        },
+        {
+            "type": "shell",
+            "only": ["proxmox-desktop"],
             "scripts": [
                 "scripts/vmware.sh"
             ]
@@ -184,7 +226,7 @@
         "iso_url": "http://mirrors.edge.kernel.org/archlinux/iso/2019.01.01/archlinux-2019.01.01-x86_64.iso",
         "iso_checksum": "494d2ca93841870d42412ffba47dd114db034924",
         "iso_checksum_type": "sha1",
-        "ssh_timeout": "10m",
+        "ssh_timeout": "15m",
         "boot_wait": "10s",
         "vm_name": "archlinux-{{isotime \"2006-01-02_15_04_05\"}}"
     }

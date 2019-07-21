@@ -16,7 +16,7 @@ sudo pacman -S --noconfirm xcape
 
 # install polybar
 chmod +x ~/.config/polybar/launch.sh
-trizen -S --noconfirm polybar
+# trizen -S --noconfirm polybar
 
 # install compositor and background image utilities
 sudo pacman -S --noconfirm compton feh python-pywal
