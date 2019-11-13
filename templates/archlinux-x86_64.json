@@ -16,8 +16,8 @@
             "http_directory": "http",
             "boot_wait": "{{user `boot_wait`}}",
             "boot_command": [
-                "<enter><wait10><wait10><wait10><wait10>",
-                "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
+                "<enter><wait10><wait10><wait10><wait10><wait10>",
+                "curl -O 'http://{{ .HTTPIP }}:{{ .HTTPPort }}/install{,-chroot}.sh'<enter><wait>",
                 "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
             ],
             "ssh_username": "dev",
@@ -46,7 +46,7 @@
             "boot_wait": "{{user `boot_wait`}}",
             "boot_command": [
                 "<enter><wait10><wait10><wait10><wait10>",
-                "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
+                "curl -O 'http://{{ .HTTPIP }}:{{ .HTTPPort }}/install{,-chroot}.sh'<enter><wait>",
                 "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
             ],
             "ssh_username": "dev",
@@ -94,41 +94,6 @@
                 "<enter><wait10><wait10><wait10><wait10><wait10><enter><enter>",
                 "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
                 "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
-            ]
-        },
-        {
-            "type": "qemu",
-            "name": "qemu-server",
-            "iso_url": "{{user `iso_url`}}",
-            "iso_checksum": "{{user `iso_checksum`}}",
-            "iso_checksum_type": "{{user `iso_checksum_type`}}",
-            "output_directory": "output/{{user `vm_name`}}",
-            "headless": "true",
-            "disk_size": "{{user `disk_size`}}",
-            "format": "qcow2",
-            "accelerator": "kvm",
-            "http_directory": "http",
-            "net_device": "virtio-net",
-            "disk_interface": "virtio",
-            "boot_wait": "{{user `boot_wait`}}",
-            "boot_command": [
-                "<enter><wait10><wait10><wait10><wait10>",
-                "curl -O 'http://{{.HTTPIP}}:{{.HTTPPort}}/install{,-chroot}.sh'<enter><wait>",
-                "bash install.sh < install-chroot.sh && systemctl reboot<enter>"
-            ],
-            "ssh_username": "dev",
-            "ssh_password": "piranha",
-            "ssh_timeout": "{{user `ssh_timeout`}}",
-            "shutdown_command": "sudo systemctl poweroff",
-            "qemuargs": [
-                [
-                    "-m",
-                    "{{ user `memory` }}"
-                ],
-                [
-                    "-smp",
-                    "cpus={{ user `cpus`}}"
-                ]
             ]
         }
     ],
@@ -178,13 +143,13 @@
     ],
     "variables": {
         "cpus": "2",
-        "disk_size": "40000",
+        "disk_size": "80000",
         "headless": "false",
-        "memory": "4096",
-        "iso_url": "http://mirrors.edge.kernel.org/archlinux/iso/2019.01.01/archlinux-2019.01.01-x86_64.iso",
-        "iso_checksum": "494d2ca93841870d42412ffba47dd114db034924",
+        "memory": "8192",
+        "iso_url": "http://mirrors.edge.kernel.org/archlinux/iso/2019.11.01/archlinux-2019.11.01-x86_64.iso",
+        "iso_checksum": "eaa165edab76243cd30a64db472a7a09c9c98a31",
         "iso_checksum_type": "sha1",
-        "ssh_timeout": "10m",
+        "ssh_timeout": "30m",
         "boot_wait": "10s",
         "vm_name": "archlinux-{{isotime \"2006-01-02_15_04_05\"}}"
     }
