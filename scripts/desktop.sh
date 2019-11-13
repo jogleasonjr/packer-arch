@@ -14,9 +14,9 @@ sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-xmodmap i3-gaps rofi
 # install capslock/escape magic
 sudo pacman -S --noconfirm xcape
 
-# install polybar
+# install polybar and compton
 chmod +x ~/.config/polybar/launch.sh
-trizen -S --noconfirm polybar compton-tryone-blackcapcoder-git
+trizen -S --noconfirm polybar libxcomposite compton-tryone-blackcapcoder-git
 
 # install compositor and background image utilities
 sudo pacman -S --noconfirm feh python-pywal

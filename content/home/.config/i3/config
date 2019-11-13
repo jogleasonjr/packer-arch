@@ -184,7 +184,7 @@ for_window [class="^.*"] border pixel 2
 smart_borders on
 
 # start compositor for sweet transparency 
-exec --no-startup-id compton --config ~/.config/compton/compton.conf --clear-shadow --blur-method kawase --blur-strength 5
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
 # start bar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
