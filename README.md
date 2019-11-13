@@ -44,7 +44,7 @@ See `.config/i3/config` for the rest of the key commands.
 
 For i3 shortcuts, the Caps Lock key has been rebound to act as the Meta/Win key. This allows Caps Lock to be used for any of the i3 shortcuts. In addition, for vim purposes, a quick press and release of the Caps Lock key will act as an escape key press. This is done using a combination of `xmodmap` and `xcape` near the [bottom of the i3 configuration file](# make caps act as left windows key when held (for i3 shortcuts)).
 
-# Windows Line Endings
+## Windows Line Endings
 
 CRLF line endings wreak havoc in the install scripts and sh files that end up in the virtual machine. For this reason be sure your environment isn't overriding the LF endings with CLRF, which Git for Windows usually does.
 
