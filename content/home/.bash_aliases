@@ -6,6 +6,8 @@ alias mx=~/.scripts/mx.sh
 
 alias fing="trizen --noconfirm"
 
+export EDITOR=vim
+
 # make a nested dir and CD into it
 mk()
 {

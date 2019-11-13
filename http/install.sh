@@ -33,25 +33,9 @@ pacman -Sy --noconfirm
 pacman -S reflector --noconfirm
 reflector --verbose --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
-# If we know we have a local package cache, smoosh it at the top of the mirror list.
-# try to find one that works
-cacheServers=("https://archlinux.jtpk.io" "http://192.168.26.146:7070")
-
-for svr in "${cacheServers[@]}"
-do
-	if curl -s --head  --request GET $svr/robots.txt | grep "200 OK" > /dev/null; then 
-		echo "Cache server $svr is UP"
-		sed -i '1iServer = '"$svr"'/$repo/os/$arch' /etc/pacman.d/mirrorlist
-		break
-	else
-		 echo "Cache server $svr is DOWN"
-	fi
-done
-
-
 # Install base packages, just enough for a basic system with ssh
 pacman -Sy --noconfirm
-pacstrap /mnt base base-devel grub openssh sudo
+pacstrap /mnt base base-devel linux dhcpcd grub openssh sudo
 swapon "${device}1"
 genfstab -p /mnt >> /mnt/etc/fstab
 swapoff "${device}1"

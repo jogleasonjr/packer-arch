@@ -26,7 +26,7 @@ mkdir -p /etc/systemd/network
 ln -sf /dev/null /etc/systemd/network/99-default.link
 
 systemctl enable sshd
-systemctl enable dhcpcd@eth0
+systemctl enable dhcpcd
 
 grub-install "$device"
 sed -i -e 's/^GRUB_TIMEOUT=.*$/GRUB_TIMEOUT=1/' /etc/default/grub
